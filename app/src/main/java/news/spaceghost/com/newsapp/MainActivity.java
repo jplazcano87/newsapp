@@ -2,6 +2,8 @@ package news.spaceghost.com.newsapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,8 @@ import java.util.List;
 import news.spaceghost.com.newsapp.model.NewsArticle;
 
 public class MainActivity extends AppCompatActivity {
+
+  private RecyclerView newsRecyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
     NewsStore.setNewsArticles(newsArticles);
 
+    newsRecyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
+    newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    HomeNewsAdapter homeNewsAdapter = new HomeNewsAdapter(NewsStore.getNewsArticles());
+    newsRecyclerView.setAdapter(homeNewsAdapter);
 
   }
 }
