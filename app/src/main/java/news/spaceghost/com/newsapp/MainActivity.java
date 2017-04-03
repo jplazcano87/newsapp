@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    Call<GetArticlesResponse> call = NewsAPI.getApi().getArticles("reuters", "top");
+    Call<GetArticlesResponse> call = NewsAPI.getApi().getArticles("reddit-r-all", "top");
 
     call.enqueue(new Callback<GetArticlesResponse>() {
       @Override

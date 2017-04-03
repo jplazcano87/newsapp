@@ -1,5 +1,7 @@
 package news.spaceghost.com.newsapp.utils;
 
+import com.google.firebase.crash.FirebaseCrash;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,6 +30,7 @@ public class DateUtils {
       return outputFormat.format(date);
     } catch (ParseException e) {
       e.printStackTrace();
+      FirebaseCrash.report(e);
     }
     return inputDate;
   }

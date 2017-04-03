@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "617937063999",
+    "firebase_url": "https://spaceghost-news.firebaseio.com",
+    "project_id": "spaceghost-news",
+    "storage_bucket": "spaceghost-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617937063999:android:6b8def5448803b13",
+        "android_client_info": {
+          "package_name": "news.spaceghost.com.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617937063999-6j42nv04nc7mht9qqcfhodna3mgoeqef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "news.spaceghost.com.newsapp",
+            "certificate_hash": "be31a1eec19fb34ca32834ca43d3eddeea249b0e"
+          }
+        },
+        {
+          "client_id": "617937063999-5553u9b4q4qer3chshlhl88rpfi2d4gg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5zA-Pb0GvIMhmRd6ORvOh8d_stn8kMEU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617937063999-5553u9b4q4qer3chshlhl88rpfi2d4gg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
