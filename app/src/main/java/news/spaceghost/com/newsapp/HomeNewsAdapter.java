@@ -11,7 +11,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import news.spaceghost.com.newsapp.model.NewsArticle;
+import news.spaceghost.com.newsapp.model.Article;
+import news.spaceghost.com.newsapp.utils.DateUtils;
 
 /**
  * Created by spaceghost on 3/26/17.
@@ -19,10 +20,10 @@ import news.spaceghost.com.newsapp.model.NewsArticle;
 
 public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNewsViewHolder> {
 
-  private List<NewsArticle> mNewsArticles;
+  private List<Article> mArticles;
 
-  public HomeNewsAdapter(List<NewsArticle> newsArticles) {
-    mNewsArticles = newsArticles;
+  public HomeNewsAdapter(List<Article> articles) {
+    mArticles = articles;
   }
 
   @Override
@@ -33,14 +34,14 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
   }
 
   @Override
-  public void onBindViewHolder(HomeNewsViewHolder holder,final int position) {
-    NewsArticle newsArticle = mNewsArticles.get(position);
-    Glide.with(holder.mCardViewImageView.getContext()).load(newsArticle.getImageUrl())
+  public void onBindViewHolder(HomeNewsViewHolder holder, final int position) {
+    Article article = mArticles.get(position);
+    Glide.with(holder.mCardViewImageView.getContext()).load(article.getUrlToImage())
         .centerCrop()
         .into(holder.mCardViewImageView);
-    holder.mNewsTitleTextView.setText(newsArticle.getTitle());
-    holder.mNewsTimeTextView.setText(newsArticle.getTime());
-    holder.mNewsDescriptionTextView.setText(newsArticle.getDetails());
+    holder.mNewsTitleTextView.setText(article.getTitle());
+    holder.mNewsTimeTextView.setText(DateUtils.formatNewsApiDate(article.getPublishedAt()));
+    holder.mNewsDescriptionTextView.setText(article.getDescription());
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -53,10 +54,10 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
   @Override
   public int getItemCount() {
     //TODO perform a null check before return the size
-    return mNewsArticles.size();
+    return mArticles.size();
   }
 
-  public static class HomeNewsViewHolder extends RecyclerView.ViewHolder{
+  public static class HomeNewsViewHolder extends RecyclerView.ViewHolder {
 
     ImageView mCardViewImageView;
     TextView mNewsTitleTextView;
