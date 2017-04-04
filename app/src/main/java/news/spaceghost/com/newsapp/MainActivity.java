@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import news.spaceghost.com.newsapp.model.GetArticlesResponse;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
   private RecyclerView newsRecyclerView;
   private CoordinatorLayout mCoordinatorLayout;
+  private ProgressBar mProgressBar;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +33,16 @@ public class MainActivity extends AppCompatActivity {
     newsRecyclerView = (RecyclerView) findViewById(R.id.activity_main_recyclerview);
     newsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+    mProgressBar = (ProgressBar) findViewById(R.id.activity_main_progressbar);
 
 
-    Call<GetArticlesResponse> call = NewsAPI.getApi().getArticles("reddit-r-all", "top");
+
+    Call<GetArticlesResponse> call = NewsAPI.getApi().getArticles("espn", "top");
 
     call.enqueue(new Callback<GetArticlesResponse>() {
       @Override
       public void onResponse(Call<GetArticlesResponse> call, Response<GetArticlesResponse> response) {
+        mProgressBar.setVisibility(View.GONE);
         showNewsApiSnack();
         GetArticlesResponse getArticlesResponse = response.body();
         NewsStore.setNewsArticles(getArticlesResponse.getArticles());
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
       @Override
       public void onFailure(Call<GetArticlesResponse> call, Throwable t) {
+        mProgressBar.setVisibility(View.GONE);
         Toast.makeText(MainActivity.this, "response received", Toast.LENGTH_SHORT).show();
       }
     });
