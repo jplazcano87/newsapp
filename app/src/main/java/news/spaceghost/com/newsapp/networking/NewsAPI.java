@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public class NewsAPI {
 
-  private static final String API_KEY = "8962bbea322e448fbf0b42f67ca14d8e";
+  private static final String API_KEY = "--insert yout api key here----";
   private static final String API_PATH = "https://newsapi.org/v1/";
 
   private static NewsService sNewsService = null;
