@@ -33,7 +33,6 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
   public HomeNewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
     View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home_news, parent, false);
     return new HomeNewsViewHolder(view);
-
   }
 
   @Override
